@@ -17,12 +17,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExpenseReport implements Serializable {
-    private String name;
     @JsonProperty("start_date")
     private LocalDate startDate;
     @JsonProperty("end_date")
     private LocalDate endDate;
-    private Category category;
     private List<Expense> expenses;
     @JsonProperty("total_expenses")
     private double totalExpenses;

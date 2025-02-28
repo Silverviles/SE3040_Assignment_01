@@ -54,6 +54,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User updateInternal(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
     public void deleteByUsername(String username) throws ServiceException {
         if (!userRepository.existsUserByUsername(username)) {
             throw new ServiceException(USER_NOT_FOUND);

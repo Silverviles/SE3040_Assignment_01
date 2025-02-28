@@ -16,7 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class IncomeReport implements Serializable {
-    private String name;
     @JsonProperty("start_date")
     private LocalDate startDate;
     @JsonProperty("end_date")

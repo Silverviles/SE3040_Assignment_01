@@ -37,7 +37,7 @@ public class User implements UserDetails {
     private List<Expense> expenses = new ArrayList<>();
     private List<Income> incomes = new ArrayList<>();
     private List<Goal> goals = new ArrayList<>();
-    private Map<Map<LocalDate, LocalDate>, Double> budget = new HashMap<>();
+    private List<Budget> budgets = new ArrayList<>();
 
     public void addExpense(Expense expense) {
         expense.setId(UUID.randomUUID().toString());
@@ -64,6 +64,15 @@ public class User implements UserDetails {
 
     public void removeGoal(Goal goal) {
         goals.remove(goal);
+    }
+
+    public void addBudget(Budget budget) {
+        budget.setId(UUID.randomUUID().toString());
+        budgets.add(budget);
+    }
+
+    public void removeBudget(Budget budget) {
+        budgets.remove(budget);
     }
 
     @JsonIgnore

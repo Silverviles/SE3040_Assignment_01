@@ -2,6 +2,7 @@ package com.silverviles.af_assignment.controller;
 
 import com.silverviles.af_assignment.common.BaseController;
 import com.silverviles.af_assignment.common.ServiceException;
+import com.silverviles.af_assignment.dao.Budget;
 import com.silverviles.af_assignment.dao.Expense;
 import com.silverviles.af_assignment.dao.Income;
 import jakarta.servlet.http.HttpServletRequest;
@@ -74,5 +75,19 @@ public class FinanceController extends BaseController {
     public List<Expense> getExpense(@NonNull HttpServletRequest request) throws ServiceException {
         log.info("Getting expenses for user: {}", extractUsernameFromRequest(request));
         return masterService.findByUsername(extractUsernameFromRequest(request)).getExpenses();
+    }
+
+    @GetMapping("/budget")
+    public Double getBudget(@NonNull HttpServletRequest request, @RequestParam String date) throws ServiceException {
+        log.info("Getting budget for user {} for date : {}", extractUsernameFromRequest(request), date);
+        return masterService.getBudget(extractUsernameFromRequest(request), date);
+    }
+
+    @PostMapping("/budget")
+    public String addBudget(@NonNull HttpServletRequest request, @RequestBody Budget budget) throws ServiceException {
+        log.info("Adding budget: {}", budget);
+        masterService.addBudget(extractUsernameFromRequest(request), budget);
+        log.info("Budget added successfully");
+        return HttpStatus.CREATED.getReasonPhrase();
     }
 }

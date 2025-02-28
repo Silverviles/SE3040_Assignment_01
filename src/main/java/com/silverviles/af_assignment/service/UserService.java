@@ -14,6 +14,7 @@ public interface UserService extends UserDetailsService {
     User findByUsername(String username) throws ServiceException;
     User save(User user) throws ServiceException;
     User update(User user) throws ServiceException;
+    User updateInternal(User user) throws ServiceException;
     void deleteByUsername(String username) throws ServiceException;
     List<User> findAll();
     UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
