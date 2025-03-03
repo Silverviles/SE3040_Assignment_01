@@ -34,6 +34,8 @@ public class User implements UserDetails {
     @JsonProperty("last_name")
     private String lastName;
     private String role;
+    private Double balance;
+    private String currency;
     private List<Expense> expenses = new ArrayList<>();
     private List<Income> incomes = new ArrayList<>();
     private List<Goal> goals = new ArrayList<>();

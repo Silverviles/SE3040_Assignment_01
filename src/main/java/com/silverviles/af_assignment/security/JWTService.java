@@ -19,7 +19,7 @@ import java.util.function.Function;
 @Slf4j
 public class JWTService {
     @Value("${jwt.secret}")
-    public String SECRET;
+    private String SECRET;
 
     public String generateToken(String userName) {
         Map<String, Object> claims = new HashMap<>();

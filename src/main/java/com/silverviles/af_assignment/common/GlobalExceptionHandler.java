@@ -1,5 +1,6 @@
 package com.silverviles.af_assignment.common;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleAuthorizationDeniedException(AuthorizationDeniedException ex) {
         log.error("AuthorizationDeniedException: {}", ex.getMessage());
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<String> handleExpiredJwtException(ExpiredJwtException ex) {
+        log.error("ExpiredJwtException: {}", ex.getMessage());
+        return new ResponseEntity<>("Token has expired", HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(Exception.class)

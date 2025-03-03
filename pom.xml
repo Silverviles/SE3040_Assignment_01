@@ -38,6 +38,7 @@
     <properties>
         <java.version>21</java.version>
         <jjwt.version>0.12.6</jjwt.version>
+        <jackson.version>2.18.3</jackson.version>
     </properties>
     <dependencies>
         <dependency>
@@ -51,6 +52,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -90,6 +95,38 @@
             <artifactId>jjwt-jackson</artifactId>
             <version>${jjwt.version}</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- Json -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <!-- Report Generation -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-core</artifactId>
+            <version>9.1.0</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.5.5</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.sendgrid/sendgrid-java -->
+        <dependency>
+            <groupId>com.sendgrid</groupId>
+            <artifactId>sendgrid-java</artifactId>
+            <version>4.10.3</version>
         </dependency>
     </dependencies>
 

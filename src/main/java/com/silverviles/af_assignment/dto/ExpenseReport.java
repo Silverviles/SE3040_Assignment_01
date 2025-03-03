@@ -1,5 +1,6 @@
 package com.silverviles.af_assignment.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.silverviles.af_assignment.dao.Category;
 import com.silverviles.af_assignment.dao.Expense;
@@ -17,6 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExpenseReport implements Serializable {
+    @JsonIgnore
+    private String username;
     @JsonProperty("start_date")
     private LocalDate startDate;
     @JsonProperty("end_date")

@@ -6,9 +6,11 @@ import com.silverviles.af_assignment.dao.Category;
 import java.util.List;
 
 public interface CategoryService {
-    Category addCategory(Category category) throws ServiceException;
+    void addCategory(Category category) throws ServiceException;
 
-    List<Category> getCategories(String username) throws ServiceException;
+    List<Category> getCategories() throws ServiceException;
+
+    Category getCategory(String name) throws ServiceException;
 
     void deleteCategory(String categoryId) throws ServiceException;
     Category updateCategoryName(String categoryId, String newName) throws ServiceException;

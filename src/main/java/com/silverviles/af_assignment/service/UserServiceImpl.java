@@ -10,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 import static com.silverviles.af_assignment.common.ExceptionCode.USER_ALREADY_EXISTS;
 import static com.silverviles.af_assignment.common.ExceptionCode.USER_NOT_FOUND;
@@ -28,9 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUsername(String username) throws ServiceException {
-        User user = userRepository.findUserByUsername(username).orElseThrow(() -> new ServiceException(USER_NOT_FOUND));
-        user.setPassword(null);
-        return user;
+        return userRepository.findUserByUsername(username).orElseThrow(() -> new ServiceException(USER_NOT_FOUND));
     }
 
     @Override

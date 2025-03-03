@@ -19,7 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category addCategory(Category category) throws ServiceException {
+    public void addCategory(Category category) throws ServiceException {
         if (isCategoryNameExists(category.getName()) && isCategoryExists(category.getId())) {
             throw new ServiceException(ExceptionCode.CATEGORY_ALREADY_EXISTS);
         } else if (isCategoryNameExists(category.getName())) {
@@ -27,12 +27,17 @@ public class CategoryServiceImpl implements CategoryService {
         } else if (isCategoryExists(category.getId())) {
             throw new ServiceException(ExceptionCode.DUPLICATE_CATEGORY_ID);
         }
-        return categoryRepository.save(category);
+        categoryRepository.save(category);
     }
 
     @Override
-    public List<Category> getCategories(String username) {
+    public List<Category> getCategories() {
         return categoryRepository.findAll();
+    }
+
+    @Override
+    public Category getCategory(String name) {
+        return categoryRepository.findCategoryByName(name).orElse(null);
     }
 
     @Override

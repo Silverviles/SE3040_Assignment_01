@@ -5,7 +5,7 @@ import com.silverviles.af_assignment.dao.*;
 import com.silverviles.af_assignment.dto.ExpenseReport;
 import com.silverviles.af_assignment.dto.IncomeReport;
 
-import java.time.LocalDate;
+import java.io.IOException;
 import java.util.List;
 
 public interface MasterService {
@@ -25,7 +25,7 @@ public interface MasterService {
 
     void deleteIncome(String username, String id) throws ServiceException;
 
-    void addExpense(String username, Expense expense) throws ServiceException;
+    void addExpense(String username, Expense expense) throws ServiceException, IOException;
 
     void updateExpense(String username, String id, Expense expense) throws ServiceException;
 
@@ -33,7 +33,7 @@ public interface MasterService {
 
     void addCategory(Category category) throws ServiceException;
 
-    List<Category> getCategories(String username) throws ServiceException;
+    List<Category> getCategories() throws ServiceException;
 
     void deleteCategory(String categoryId) throws ServiceException;
 
@@ -43,9 +43,11 @@ public interface MasterService {
 
     void addBudget(String username, Budget budget) throws ServiceException;
 
-    Double getBudget(String username, String date) throws ServiceException;
+    List<Budget> getBudgets(String username, String date) throws ServiceException;
 
     IncomeReport getIncomeReport(String name, String start, String end, String tag) throws ServiceException;
 
     ExpenseReport getExpenseReport(String name, String start, String end, String category, String tag) throws ServiceException;
+
+    void sendEmail(String to, String subject, String body) throws IOException, ServiceException;
 }

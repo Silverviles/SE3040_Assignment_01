@@ -7,6 +7,7 @@ import com.silverviles.af_assignment.dto.AuthResponse;
 import com.silverviles.af_assignment.security.JWTService;
 import com.silverviles.af_assignment.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -34,9 +35,10 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public User register(@RequestBody User user) throws ServiceException {
+    public String register(@RequestBody User user) throws ServiceException {
         user.setRole("user");
-        return userService.save(user);
+        userService.save(user);
+        return HttpStatus.CREATED.getReasonPhrase();
     }
 
     @PostMapping("/login")

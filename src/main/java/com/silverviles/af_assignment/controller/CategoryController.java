@@ -3,6 +3,7 @@ package com.silverviles.af_assignment.controller;
 import com.silverviles.af_assignment.common.BaseController;
 import com.silverviles.af_assignment.common.ServiceException;
 import com.silverviles.af_assignment.dao.Category;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -37,8 +38,8 @@ public class CategoryController extends BaseController {
     }
 
     @GetMapping("/get")
-    public List<Category> getCategories(String username) throws ServiceException {
-        log.info("Getting categories for user: {}", username);
-        return masterService.getCategories(username);
+    public List<Category> getCategories(HttpServletRequest request) throws ServiceException {
+        log.info("Getting categories for user: {}", extractUsernameFromRequest(request));
+        return masterService.getCategories();
     }
 }
